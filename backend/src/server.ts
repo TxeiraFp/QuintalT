@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
+import cors from "@fastify/cors";
 
 import { PrismaCategoryRepository } from "./infrastructure/PrismaCategoryRepository.js";
 import { PrismaProductRepository } from "./infrastructure/PrismaProductRepository.js";
@@ -17,6 +18,10 @@ dotenv.config();
 
 const app = Fastify({
   logger: true,
+});
+
+await app.register(cors, {
+  origin: "http://localhost:3000",
 });
 
 // ======================================================

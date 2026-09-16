@@ -3,7 +3,7 @@ import type {
   CategoryFilters,
   CategoryRepository,
 } from "../domain/repositories/CategoryRepository.js";
-import { prisma } from "../../prisma/PrismaClient.js";
+import { prisma } from "../prisma/PrismaClient.js";
 
 export class PrismaCategoryRepository implements CategoryRepository {
   async create(category: Category): Promise<Category> {

@@ -5,7 +5,9 @@ import type {
   ProductFilters,
   ProductRepository,
 } from "../domain/repositories/ProductRepository.js";
-import { prisma } from "../../prisma/PrismaClient.js";
+import { prisma } from "../prisma/PrismaClient.js";
+
+
 
 export class PrismaProductRepository
   implements ProductRepository
