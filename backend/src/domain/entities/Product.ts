@@ -1,124 +1,144 @@
 import type { Decimal } from "../../generated/prisma/internal/prismaNamespace.js";
 
+export interface ProductCategory {
+id: number;
+name: string;
+slug: string;
+createdAt?: Date;
+updatedAt?: Date;
+}
+
 export interface ProductProps {
-  id?: number;
-  name: string;
-  slug: string;
-  description?: string;
-  price: Decimal;
-  imageUrl?: string;
-  buyUrl?: string;
-  featured?: boolean;
-  active?: boolean;
-  categoryId: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+id?: number;
+name: string;
+slug: string;
+description?: string;
+price: Decimal;
+imageUrl?: string;
+buyUrl?: string;
+featured?: boolean;
+active?: boolean;
+categoryId: number;
+category?: ProductCategory;
+createdAt?: Date;
+updatedAt?: Date;
 }
 
 export class Product {
-  private readonly id?: number;
-  private name: string;
-  private slug: string;
-  private description?: string;
-  private price: Decimal;
-  private imageUrl?: string;
-  private buyUrl?: string;
-  private featured: boolean;
-  private active: boolean;
-  private categoryId: number;
-  private readonly createdAt: Date;
-  private updatedAt: Date;
+private readonly id?: number;
+private name: string;
+private slug: string;
+private description?: string;
+private price: Decimal;
+private imageUrl?: string;
+private buyUrl?: string;
+private featured: boolean;
+private active: boolean;
+private categoryId: number;
+private category?: ProductCategory;
+private readonly createdAt: Date;
+private updatedAt: Date;
 
-  constructor(props: ProductProps) {
-    this.id = props.id;
-    this.name = props.name;
-    this.slug = props.slug;
-    this.description = props.description;
-    this.price = props.price;
-    this.imageUrl = props.imageUrl;
-    this.buyUrl = props.buyUrl;
-    this.featured = props.featured ?? false;
-    this.active = props.active ?? true;
-    this.categoryId = props.categoryId;
+constructor(props: ProductProps) {
+this.id = props.id;
+this.name = props.name;
+this.slug = props.slug;
+this.description = props.description;
+this.price = props.price;
+this.imageUrl = props.imageUrl;
+this.buyUrl = props.buyUrl;
+this.featured = props.featured ?? false;
+this.active = props.active ?? true;
+this.categoryId = props.categoryId;
+this.category = props.category;
 
-    this.createdAt = props.createdAt ?? new Date();
-    this.updatedAt = props.updatedAt ?? new Date();
-  }
+this.createdAt =
+  props.createdAt ?? new Date();
 
-  getId(): number | undefined {
-    return this.id;
-  }
+this.updatedAt =
+  props.updatedAt ?? new Date();
 
-  getName(): string {
-    return this.name;
-  }
 
-  getSlug(): string {
-    return this.slug;
-  }
+}
 
-  getDescription(): string | undefined {
-    return this.description;
-  }
+getId(): number | undefined {
+return this.id;
+}
 
-  getPrice(): Decimal {
-    return this.price;
-  }
+getName(): string {
+return this.name;
+}
 
-  getImageUrl(): string | undefined {
-    return this.imageUrl;
-  }
+getSlug(): string {
+return this.slug;
+}
 
-  getBuyUrl(): string | undefined {
-    return this.buyUrl;
-  }
+getDescription(): string | undefined {
+return this.description;
+}
 
-  getFeatured(): boolean {
-    return this.featured;
-  }
+getPrice(): Decimal {
+return this.price;
+}
 
-  getActive(): boolean {
-    return this.active;
-  }
+getImageUrl(): string | undefined {
+return this.imageUrl;
+}
 
-  getCategoryId(): number {
-    return this.categoryId;
-  }
+getBuyUrl(): string | undefined {
+return this.buyUrl;
+}
 
-  getCreatedAt(): Date {
-    return this.createdAt;
-  }
+getFeatured(): boolean {
+return this.featured;
+}
 
-  getUpdatedAt(): Date {
-    return this.updatedAt;
-  }
+getActive(): boolean {
+return this.active;
+}
 
-  setFeatured(featured: boolean): void {
-    this.featured = featured;
-    this.updatedAt = new Date();
-  }
+getCategoryId(): number {
+return this.categoryId;
+}
 
-  setActive(active: boolean): void {
-    this.active = active;
-    this.updatedAt = new Date();
-  }
+getCategory(): ProductCategory | undefined {
+return this.category;
+}
 
-  update(
-    name: string,
-    slug: string,
-    description: string | undefined,
-    price: Decimal,
-    imageUrl: string | undefined,
-    buyUrl: string | undefined,
-    categoryId: number
-  ): void {
-    this.name = name;
-    this.slug = slug;
-    this.description = description;
-    this.price = price;
-    this.imageUrl = imageUrl;
-    this.buyUrl = buyUrl;
-    this.categoryId = categoryId;
-    this.updatedAt = new Date();
-  }
+getCreatedAt(): Date {
+return this.createdAt;
+}
+
+getUpdatedAt(): Date {
+return this.updatedAt;
+}
+
+setFeatured(featured: boolean): void {
+this.featured = featured;
+this.updatedAt = new Date();
+}
+
+setActive(active: boolean): void {
+this.active = active;
+this.updatedAt = new Date();
+}
+
+update(
+name: string,
+slug: string,
+description: string | undefined,
+price: Decimal,
+imageUrl: string | undefined,
+buyUrl: string | undefined,
+categoryId: number,
+): void {
+this.name = name;
+this.slug = slug;
+this.description = description;
+this.price = price;
+this.imageUrl = imageUrl;
+this.buyUrl = buyUrl;
+this.categoryId = categoryId;
+this.updatedAt = new Date();
+}
 }
